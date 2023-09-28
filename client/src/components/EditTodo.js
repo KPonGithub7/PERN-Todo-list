@@ -7,14 +7,11 @@ const EditTodo = ({ todo }) => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = await fetch(
-                `http://localhost:2000/todos/${todo.todo_id}`,
-                {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                }
-            );
+            await fetch(`http://localhost:2000/todos/${todo.todo_id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
             window.location = "/";
         } catch (error) {
             console.error(error.message);
@@ -37,7 +34,6 @@ const EditTodo = ({ todo }) => {
                 id={`id${todo.todo_id}`}
                 onClick={(e) => setDescription(todo.description)}
             >
-              
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

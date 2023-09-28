@@ -8,7 +8,7 @@ const ListTodo = () => {
 
     const deleteTodo = async (id) => {
         try {
-            const delTodo = await fetch(`http://localhost:2000/todos/${id}`, {
+            await fetch(`http://localhost:2000/todos/${id}`, {
                 method: "DELETE",
             });
             setTodos(todos.filter((todo) => todo.todo_id !== id));
@@ -47,7 +47,7 @@ const ListTodo = () => {
                         <tr key={todo.todo_id}>
                             <td>{todo.description}</td>
                             <td>
-                                <EditTodo todo={todo}/>
+                                <EditTodo todo={todo} />
                             </td>
                             <td>
                                 <button
